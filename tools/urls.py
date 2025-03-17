@@ -1,0 +1,5 @@
+main_page_url='https://stellarburgers.nomoreparties.site/'
+registration_page_url='https://stellarburgers.nomoreparties.site/register'
+authorization_page_url='https://stellarburgers.nomoreparties.site/login'
+password_recovery_page_url='https://stellarburgers.nomoreparties.site/forgot-password'
+profile_page_url = 'https://stellarburgers.nomoreparties.site/account/profile'

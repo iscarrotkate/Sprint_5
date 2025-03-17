@@ -29,6 +29,6 @@ profile_login_input= "//label[contains(text(),'Логин')]/following-sibling::
 profile_password_input= "//label[contains(text(),'Пароль')]/following-sibling::input"       #Поле для ввода пароля на странице личного кабинета
 profile_exit_button="//button[contains(text(),'Выход')]"        # #Кнопка "Выход" на странице личного кабинета
 
-constructor_bread=".//span[text()='Булки']"     #Вкладка "Булки" на главной странице
-constructor_sauces=".//span[text()='Соусы']"        #Вкладка "Соусы" главной странице
-constructor_fillings=".//span[text()='Начинки']"        #Вкладка "Начинки" главной странице
+constructor_bread=".//span[text()='Булки']/parent::*"     #Вкладка "Булки" на главной странице
+constructor_sauces=".//span[text()='Соусы']/parent::*"        #Вкладка "Соусы" главной странице
+constructor_fillings=".//span[text()='Начинки']/parent::*"        #Вкладка "Начинки" главной странице

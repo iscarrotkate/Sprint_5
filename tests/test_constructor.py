@@ -1,25 +1,32 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-import pytest
 
 from tools.locators import constructor_fillings, constructor_sauces, constructor_bread
+from tools.urls import main_page_url
+
+class TestConstructor:
+
+    def test_navigation_to_sauces(self, driver):
+
+        driver.get(main_page_url)
+
+        driver.find_element(By.XPATH, constructor_sauces).click()
+
+        assert 'current' in driver.find_element(By.XPATH, constructor_sauces).get_attribute("class")
+
+    def test_navigation_to_fillings(self, driver):
+
+        driver.get(main_page_url)
+
+        driver.find_element(By.XPATH, constructor_fillings).click()
+
+        assert 'current' in driver.find_element(By.XPATH, constructor_fillings).get_attribute("class")
 
 
-@pytest.mark.parametrize('constructor_option', [constructor_fillings, constructor_sauces])
-def test_navigation_between_constructor_sections(main_page, constructor_option):
+    def test_navigate_back_to_default_section(self, driver):
 
-    driver = webdriver.Chrome()
-    driver.get(main_page.url)
+        driver.get(main_page_url)
 
-    default_section = driver.find_element(By.XPATH, constructor_bread)
-    target_section = driver.find_element(By.XPATH, constructor_option)
+        driver.find_element(By.XPATH, constructor_sauces).click()
+        driver.find_element(By.XPATH, constructor_bread).click()
 
-    target_section.click()
-
-    assert 'current' in target_section.find_element(By.XPATH,"./parent::*").get_attribute("class")
-
-    default_section.click()
-
-    assert 'current' in default_section.find_element(By.XPATH,"./parent::*").get_attribute("class")
-
-    driver.quit()
+        assert 'current' in driver.find_element(By.XPATH, constructor_bread).get_attribute("class")
